@@ -7,8 +7,13 @@ Add-PsSnapin VMware.VimAutomation.Core
 #Load Modules
 Import-Module .\Get-VMDiskMap.ps1
 
+#Collect credentials
+Write-Host "Please enter the credentials for connecting to vCenter"
+$VCcreds = Get-Credential
+Write-Host "Please enter the credentials to connect to domain computers"
+$ADcreds = Get-Credential
+
 #Connect to vCenter Server
-$creds = Get-Credential
 Connect-VIServer vcenter -Credential $creds > $NUL 
 
 Do {
