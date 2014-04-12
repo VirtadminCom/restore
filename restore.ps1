@@ -1,5 +1,13 @@
-Connect-VIServer vcenter -User "lab\administrator" -Password "$unshine256"
-cls
+#Load the VMware Snapin if not already loaded
+if ( (Get-PSSnapin -Name VMware.VimAutomation.Core -ErrorAction SilentlyContinue) -eq $null )
+{
+Add-PsSnapin VMware.VimAutomation.Core
+}
+
+#Connect to vCenter Server
+$creds = Get-Credential
+Connect-VIServer vcenter -Credential $creds > $NUL 
+
 Do {
 $vmname = read-host -prompt "Enter the name of the VM to restore files from"
 } while ($vmname -eq $null)
