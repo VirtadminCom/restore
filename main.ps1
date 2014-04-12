@@ -35,8 +35,3 @@ Write-Host -ForegroundColor Green "Please enter the menu number of the disk to r
 [Int]$VMDKchoice = Read-Host }
 $SrcDisk = $disks[$VMDKchoice-1].DiskFile
 $SrcDisk
-# Switch( $VMDKchoice ){
-  # 1{#run an action or call a function here }
-  # 2{<run an action or call a function here #>}
-  # 3{<#run an action or call a function here #>}
-# default{<#run a default action or call a function here #>}
