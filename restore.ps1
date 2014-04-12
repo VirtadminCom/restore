@@ -4,6 +4,9 @@ if ( (Get-PSSnapin -Name VMware.VimAutomation.Core -ErrorAction SilentlyContinue
 Add-PsSnapin VMware.VimAutomation.Core
 }
 
+#Load Modules
+Import-Module .\Get-VMDiskMap.ps1
+
 #Connect to vCenter Server
 $creds = Get-Credential
 Connect-VIServer vcenter -Credential $creds > $NUL 
