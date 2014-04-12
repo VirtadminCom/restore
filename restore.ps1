@@ -8,13 +8,16 @@ Add-PsSnapin VMware.VimAutomation.Core
 Import-Module .\Get-VMDiskMap.ps1
 
 #Collect credentials
-Write-Host "Please enter the credentials for connecting to vCenter"
-$VCcreds = Get-Credential
-Write-Host "Please enter the credentials to connect to domain computers"
-$ADcreds = Get-Credential
+$VCserver = Read-Host -prompt "Enter FQDN of vCenter to connect to" 
+Write-Host -ForegroundColor Green "You will now be prompted to enter your credentials for connecting to vCenter"
+Sleep 3
+$VCcreds = Get-Credential $null
+Write-Host -ForegroundColor Green "You will now be prompted to enter your credentials to connect to domain computers"
+Sleep 3
+$ADcreds = Get-Credential $null
 
 #Connect to vCenter Server
-Connect-VIServer vcenter -Credential $creds > $NUL 
+Connect-VIServer $VCserver -Credential $VCcreds > $NUL 
 
 Do {
 $vmname = read-host -prompt "Enter the name of the VM to restore files from"
