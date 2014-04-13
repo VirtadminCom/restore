@@ -74,11 +74,13 @@ $SrcDisk = $disks[$VMDKchoice-1].DiskFile
 Log("The user wants to restore the VMDK: $SrcDisk")
 
 #Regex to extract datastore 
-$regExObj = [regex] "\[[^)]*\]"
+$regExObj = [regex] "\[[^)]*\]" #search for text in between brackets
 $parsedDatastore = $regExObj.match($SrcDisk)
-$srcDatastore = ($parsedDatastore.groups[0].Value).Trim("[]")
+$srcDatastore = ($parsedDatastore.groups[0].Value).Trim("[]") #strip brackets
 Write-Host "Datastore is: $srcDatastore"
+Log("Datastore is parsed as: $srcDatastore")
 
 #Get path to VMDK
-$SrcVMDK = "/" + $SrcDisk.Split("] ")[2]
+$SrcVMDK = "/" + $SrcDisk.Split("] ")[2] #Take string after the closing bracket
 Write-Host "Path to disk is: $SrcVMDK"
+Log("Path to disk is parsed as: $SrcVMDK")
