@@ -40,11 +40,13 @@ Log("Connected successfully!")
 Write-Host -ForegroundColor Green "Enter the name of the VM to restore a disk from: "  -NoNewLine 
 $SrcVM = Read-Host
 Log("User wants to restore a disk from the VM: $SrcVM")
+
+#Attempt a WMI query against to guest VM to get it's local disks 
 Try
 {
     $disks = Get-VMDiskMap $SrcVM $ADcreds -ErrorAction Stop | Select *
 }
-Catch [System.Runtime.InteropServices.COMException]
+Catch [System.Runtime.InteropServices.COMException] #If RPC server unavailable
 {
     $errMsg = "Could not connect for WMI query. Check firewalls/RPC service and try again! Exiting..."
     Write-Host -ForegroundColor Red $errMsg
@@ -55,6 +57,8 @@ Catch [System.Runtime.InteropServices.COMException]
 }
 Log("The disks on $SrcVM are:")
 $disks | Select DiskName,SCSI_Id,DiskFile,DiskSize | %{Log($_)}
+
+#Disks menu
 [int]$VMDKchoice = 0
 while ( $VMDKchoice -lt 1 -or $VMDKchoice -gt $disks.Count){
     $diskno = 0
@@ -62,8 +66,19 @@ while ( $VMDKchoice -lt 1 -or $VMDKchoice -gt $disks.Count){
         $diskno = $diskno + 1
         Write-Host $diskno. $disk.WindowsDisks,"    "$disk.DiskSize GB
     }
+
+#Give the user a choice of which disk to restore
 Write-Host -ForegroundColor Green "Please enter the menu number of the disk to restore: " -NoNewLine 
 [Int]$VMDKchoice = Read-Host }
 $SrcDisk = $disks[$VMDKchoice-1].DiskFile
 Log("The user wants to restore the VMDK: $SrcDisk")
-$SrcDisk
+
+#Regex to extract datastore 
+$regExObj = [regex] "\[[^)]*\]"
+$parsedDatastore = $regExObj.match($SrcDisk)
+$srcDatastore = ($parsedDatastore.groups[0].Value).Trim("[]")
+Write-Host "Datastore is: $srcDatastore"
+
+#Get path to VMDK
+$SrcVMDK = "/" + $SrcDisk.Split("] ")[2]
+Write-Host "Path to disk is: $SrcVMDK"

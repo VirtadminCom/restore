@@ -1,0 +1,12 @@
+04/13/2014 15:46:10    Imported Get-VMDiskMap module
+04/13/2014 15:46:12    Specified vCenter is: va-vc-01.virtadmin.com
+04/13/2014 15:46:18    Recieved vCenter credentials from user
+04/13/2014 15:46:25    Recieved AD credentials from user
+04/13/2014 15:46:25    Attempting to connect to vCenter: va-vc-01.virtadmin.com
+04/13/2014 15:46:25    Connected successfully!
+04/13/2014 15:46:27    User wants to restore a disk from the VM: va-dc-01
+04/13/2014 15:46:28    The disks on va-dc-01 are:
+04/13/2014 15:46:28    @{DiskName=Hard disk 1; SCSI_Id=0 : 0; DiskFile=[va-nfs-1] VA-DC-01/VA-DC-01.vmdk; DiskSize=40}
+04/13/2014 15:46:28    @{DiskName=Hard disk 2; SCSI_Id=0 : 1; DiskFile=[va-nfs-1] VA-DC-01/VA-DC-01_1.vmdk; DiskSize=10}
+04/13/2014 15:46:28    @{DiskName=Hard disk 3; SCSI_Id=0 : 2; DiskFile=[va-nfs-1] VA-DC-01/VA-DC-01_2.vmdk; DiskSize=15}
+04/13/2014 15:46:29    The user wants to restore the VMDK: [va-nfs-1] VA-DC-01/VA-DC-01.vmdk
