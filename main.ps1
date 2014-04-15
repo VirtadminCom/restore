@@ -17,6 +17,8 @@ Log("Added VMware modules because they weren't already loaded")
 #Load Modules
 Import-Module .\Get-VMDiskMap.ps1 -Force
 Log("Imported Get-VMDiskMap module")
+Import-Module .\Get-NetAppLunSerial.ps1 -Force
+Log("Imported Get-NetAppLunSerial module")
 
 #Collect credentials
 Write-Host -ForegroundColor Green "Enter FQDN of vCenter to connect to: " -NoNewLine 
@@ -84,3 +86,10 @@ Log("Datastore is parsed as: $srcDatastore")
 $SrcVMDK = "/" + $SrcDisk.Split("] ")[2] #Take string after the closing bracket
 Write-Host "Path to disk is: $SrcVMDK"
 Log("Path to disk is parsed as: $SrcVMDK")
+
+#TODO -- Determine whether datastore is NFS, iSCSI, or FC 
+
+#Correlate the datastore with a LUN
+$naa = (Get-Datastore $srcDatastore).ExtensionData.Info.Vmfs.Extent[0].DiskName
+$LUNserial = Get-NetAppLunSerial $naa
+Write-Host "The NetApp LUN's serial number is: $LUNserial"

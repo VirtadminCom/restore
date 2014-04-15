@@ -1,14 +1,15 @@
-04/13/2014 15:50:34    Imported Get-VMDiskMap module
-04/13/2014 15:50:38    Specified vCenter is: va-vc-01.virtadmin.com
-04/13/2014 15:50:44    Recieved vCenter credentials from user
-04/13/2014 15:50:51    Recieved AD credentials from user
-04/13/2014 15:50:51    Attempting to connect to vCenter: va-vc-01.virtadmin.com
-04/13/2014 15:50:53    Connected successfully!
-04/13/2014 15:50:58    User wants to restore a disk from the VM: va-dc-01
-04/13/2014 15:51:01    The disks on va-dc-01 are:
-04/13/2014 15:51:01    @{DiskName=Hard disk 1; SCSI_Id=0 : 0; DiskFile=[va-nfs-1] VA-DC-01/VA-DC-01.vmdk; DiskSize=40}
-04/13/2014 15:51:01    @{DiskName=Hard disk 2; SCSI_Id=0 : 1; DiskFile=[va-nfs-1] VA-DC-01/VA-DC-01_1.vmdk; DiskSize=10}
-04/13/2014 15:51:01    @{DiskName=Hard disk 3; SCSI_Id=0 : 2; DiskFile=[va-nfs-1] VA-DC-01/VA-DC-01_2.vmdk; DiskSize=15}
-04/13/2014 15:51:02    The user wants to restore the VMDK: [va-nfs-1] VA-DC-01/VA-DC-01.vmdk
-04/13/2014 15:51:02    Datastore is: va-nfs-1
-04/13/2014 15:51:02    Path to disk is: /VA-DC-01/VA-DC-01.vmdk
+04/15/2014 12:02:20    Imported Get-VMDiskMap module
+04/15/2014 12:02:20    Imported Get-NetAppLunSerial module
+04/15/2014 12:02:21    Specified vCenter is: va-vc-01.virtadmin.com
+04/15/2014 12:02:27    Recieved vCenter credentials from user
+04/15/2014 12:02:33    Recieved AD credentials from user
+04/15/2014 12:02:33    Attempting to connect to vCenter: va-vc-01.virtadmin.com
+04/15/2014 12:02:33    Connected successfully!
+04/15/2014 12:02:35    User wants to restore a disk from the VM: va-dc-01
+04/15/2014 12:02:36    The disks on va-dc-01 are:
+04/15/2014 12:02:36    @{DiskName=Hard disk 1; SCSI_Id=0 : 0; DiskFile=[va-nfs-1] VA-DC-01/VA-DC-01.vmdk; DiskSize=40}
+04/15/2014 12:02:36    @{DiskName=Hard disk 2; SCSI_Id=0 : 1; DiskFile=[va-nfs-1] VA-DC-01/VA-DC-01_1.vmdk; DiskSize=10}
+04/15/2014 12:02:36    @{DiskName=Hard disk 3; SCSI_Id=0 : 2; DiskFile=[va-nfs-1] VA-DC-01/VA-DC-01_2.vmdk; DiskSize=15}
+04/15/2014 12:02:37    The user wants to restore the VMDK: [va-nfs-1] VA-DC-01/VA-DC-01.vmdk
+04/15/2014 12:02:37    Datastore is parsed as: va-nfs-1
+04/15/2014 12:02:37    Path to disk is parsed as: /VA-DC-01/VA-DC-01.vmdk
